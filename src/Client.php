@@ -1,6 +1,6 @@
 <?php
 /**
- * PayFast API HTTP Client
+ * PayFast API HTTP Client.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
  * @copyright 2018 Jacques Marneweck.  All rights strictly reserved.
@@ -49,7 +49,7 @@ class Client extends \GuzzleHttp\Client
                 $this->options['hostname'],
                 $this->options['port']
             ),
-            'verify' => false,
+            'verify'  => false,
             'headers' => [
                 'User-Agent'  => 'PayFastAPIClient-PHP/'.self::VERSION.' '.\GuzzleHttp\default_user_agent(),
                 'merchant-id' => $this->options['merchant-id'],
@@ -73,7 +73,7 @@ class Client extends \GuzzleHttp\Client
         ];
 
         if (isset($this->options['testing'])
-            && (bool)$this->options['testing'] === true
+            && (bool) $this->options['testing'] === true
         ) {
             $params['testing'] = 'true';
         }
@@ -82,7 +82,7 @@ class Client extends \GuzzleHttp\Client
     }
 
     /**
-     * Check if the API is responding to requests for a given token
+     * Check if the API is responding to requests for a given token.
      *
      * @param string $token
      *
@@ -107,16 +107,17 @@ class Client extends \GuzzleHttp\Client
             $response = $this->get(
                 sprintf(
                     '/transactions/history/daily?%s%s',
-                    isset($params['date']) ? 'date=' . $params['date'] : '',
+                    isset($params['date']) ? 'date='.$params['date'] : '',
                     isset($params['testing']) ? '&testing=true' : ''
                 ),
                 [
                     'headers' => [
                         'timestamp' => $params['timestamp'],
-                        'signature' => md5($sigstring)
+                        'signature' => md5($sigstring),
                     ],
                 ]
             );
+
             return [
                 'status'    => 'ok',
                 'http_code' => $response->getStatusCode(),
@@ -128,7 +129,7 @@ class Client extends \GuzzleHttp\Client
     }
 
     /**
-     * Check if the API is responding to requests for a given token
+     * Check if the API is responding to requests for a given token.
      *
      * @param string $token
      *
@@ -161,10 +162,11 @@ class Client extends \GuzzleHttp\Client
                 [
                 'headers' => [
                         'timestamp' => $params['timestamp'],
-                        'signature' => md5($sigstring)
+                        'signature' => md5($sigstring),
                 ],
                 ]
             );
+
             return [
                 'status'    => 'ok',
                 'http_code' => $response->getStatusCode(),
@@ -176,7 +178,7 @@ class Client extends \GuzzleHttp\Client
     }
 
     /**
-     * Check if the API is responding to requests for a given token
+     * Check if the API is responding to requests for a given token.
      *
      * @param string $token
      *
@@ -190,8 +192,8 @@ class Client extends \GuzzleHttp\Client
             $params = array_merge(
                 [
                     'timestamp'   => \Carbon\Carbon::now()->toIso8601String(),
-                    'from' => $from,
-                    'to' => $to,
+                    'from'        => $from,
+                    'to'          => $to,
                 ],
                 $this->getDefaultParams()
             );
@@ -209,10 +211,11 @@ class Client extends \GuzzleHttp\Client
                 [
                 'headers' => [
                         'timestamp' => $params['timestamp'],
-                        'signature' => md5($sigstring)
+                        'signature' => md5($sigstring),
                 ],
                 ]
             );
+
             return [
                 'status'    => 'ok',
                 'http_code' => $response->getStatusCode(),
@@ -224,7 +227,7 @@ class Client extends \GuzzleHttp\Client
     }
 
     /**
-     * Check if the API is responding to requests for a given token
+     * Check if the API is responding to requests for a given token.
      *
      * @param string $token
      *
@@ -257,10 +260,11 @@ class Client extends \GuzzleHttp\Client
                 [
                 'headers' => [
                         'timestamp' => $params['timestamp'],
-                        'signature' => md5($sigstring)
+                        'signature' => md5($sigstring),
                 ],
                 ]
             );
+
             return [
                 'status'    => 'ok',
                 'http_code' => $response->getStatusCode(),
@@ -272,7 +276,7 @@ class Client extends \GuzzleHttp\Client
     }
 
     /**
-     * Check if the API is responding to requests for a given token
+     * Check if the API is responding to requests for a given token.
      *
      * @param string $arn Acquirer (PayFast's Reference Number)
      *
@@ -302,7 +306,7 @@ class Client extends \GuzzleHttp\Client
                 [
                     'headers' => [
                         'timestamp' => $params['timestamp'],
-                        'signature' => md5($sigstring)
+                        'signature' => md5($sigstring),
                     ],
                 ]
             );
