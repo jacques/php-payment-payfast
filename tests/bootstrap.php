@@ -13,6 +13,6 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 \VCR\VCR::configure()
-    ->enableRequestMatchers(array('method', 'url', 'host'))
+    ->enableRequestMatchers(['method', 'url', 'host'])
     ->setStorage('json');
 \VCR\VCR::turnOn();
