@@ -1,4 +1,19 @@
 {
+    "name": "jacques/php-payment-payfast",
+    "type": "library",
+    "description": "PayFast driver for recurring billing management, adhoc payments and transaction querying",
+    "keywords": [
+        "gateway",
+        "payfast"
+    ],
+    "homepage": "https://github.com/jacques/php-payment-payfast",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jacques Marneweck",
+            "email": "jacques@siberia.co.za"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "^6.3",
         "nesbot/carbon": "^1.22"
