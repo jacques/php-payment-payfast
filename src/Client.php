@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * PayFast API HTTP Client.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2018 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2018-2020 Jacques Marneweck.  All rights strictly reserved.
  * @license   MPLv2
  */
 
@@ -14,7 +14,7 @@ class Client extends \GuzzleHttp\Client
     /**
      * @const string Version number
      */
-    const VERSION = '0.0.1';
+    const VERSION = '0.0.2';
 
     /**
      * @var array[]
@@ -28,9 +28,7 @@ class Client extends \GuzzleHttp\Client
     ];
 
     /**
-     * @param   $options array
-     *
-     * @return void
+     * @param array $options
      */
     public function __construct($options = [])
     {
@@ -63,8 +61,10 @@ class Client extends \GuzzleHttp\Client
     /**
      * Returns default parameters PayFast expects to be in our params array for
      * use when creating the hash for the signature of the request.
+     *
+     * @return array
      */
-    public function getDefaultParams()
+    public function getDefaultParams(): array
     {
         $params = [
             'merchant-id' => $this->options['merchant-id'],
@@ -87,10 +87,11 @@ class Client extends \GuzzleHttp\Client
      * @param string $token
      *
      * @throws Exception
+     * @throws \GuzzleHttp\Exception\ClientException
      *
-     * @return array
+     * @return string
      */
-    public function transactionHistoryDaily($date)
+    public function transactionHistoryDaily(string $date): array
     {
         try {
             $params = array_merge(
@@ -131,13 +132,13 @@ class Client extends \GuzzleHttp\Client
     /**
      * Check if the API is responding to requests for a given token.
      *
-     * @param string $token
+     * @param string $date
      *
      * @throws Exception
      *
      * @return array
      */
-    public function transactionHistoryMonthly($date = null)
+    public function transactionHistoryMonthly($date = null): array
     {
         try {
             $params = array_merge(
@@ -160,10 +161,10 @@ class Client extends \GuzzleHttp\Client
                     isset($params['testing']) ? '&testing=true' : ''
                 ),
                 [
-                'headers' => [
+                    'headers' => [
                         'timestamp' => $params['timestamp'],
                         'signature' => md5($sigstring),
-                ],
+                    ],
                 ]
             );
 
@@ -180,13 +181,14 @@ class Client extends \GuzzleHttp\Client
     /**
      * Check if the API is responding to requests for a given token.
      *
-     * @param string $token
+     * @param string $from
+     * @param string $to
      *
-     * @throws Exception
+     * @throws \GuzzleHttp\Exception\ClientException
      *
      * @return array
      */
-    public function transactionHistoryPeriod($from, $to)
+    public function transactionHistoryPeriod(string $from, string $to): array
     {
         try {
             $params = array_merge(
@@ -229,13 +231,13 @@ class Client extends \GuzzleHttp\Client
     /**
      * Check if the API is responding to requests for a given token.
      *
-     * @param string $token
+     * @param string $date
      *
      * @throws Exception
      *
      * @return array
      */
-    public function transactionHistoryWeekly($date = null)
+    public function transactionHistoryWeekly(string $date): array
     {
         try {
             $params = array_merge(
@@ -282,9 +284,9 @@ class Client extends \GuzzleHttp\Client
      *
      * @throws Exception
      *
-     * @return array
+     * @return string
      */
-    public function transactionQuery($arn)
+    public function transactionQuery(string $arn): array
     {
         try {
             $params = array_merge(
