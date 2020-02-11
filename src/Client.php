@@ -9,6 +9,8 @@
 
 namespace Jacques\Payment\PayFast;
 
+use Exception;
+
 class Client extends \GuzzleHttp\Client
 {
     /**
@@ -125,7 +127,11 @@ class Client extends \GuzzleHttp\Client
                 'body'      => (string) $response->getBody(),
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            var_dump($e->getMessage());
+            return [
+                'status' => 'error',
+                'http_code' => $response->getStatusCode(),
+                'body' => $e->getMessage(),
+            ];
         }
     }
 
@@ -174,7 +180,11 @@ class Client extends \GuzzleHttp\Client
                 'body'      => (string) $response->getBody(),
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            var_dump($e->getMessage());
+            return [
+                'status' => 'error',
+                'http_code' => $response->getStatusCode(),
+                'body' => $e->getMessage(),
+            ];
         }
     }
 
@@ -224,7 +234,11 @@ class Client extends \GuzzleHttp\Client
                 'body'      => (string) $response->getBody(),
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            var_dump($e->getMessage());
+            return [
+                'status' => 'error',
+                'http_code' => $response->getStatusCode(),
+                'body' => $e->getMessage(),
+            ];
         }
     }
 
@@ -273,7 +287,11 @@ class Client extends \GuzzleHttp\Client
                 'body'      => (string) $response->getBody(),
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            var_dump($e->getMessage());
+            return [
+                'status' => 'error',
+                'http_code' => $response->getStatusCode(),
+                'body' => $e->getMessage(),
+            ];
         }
     }
 
@@ -284,7 +302,7 @@ class Client extends \GuzzleHttp\Client
      *
      * @throws Exception
      *
-     * @return string
+     * @return array
      */
     public function transactionQuery(string $arn): array
     {
@@ -319,7 +337,11 @@ class Client extends \GuzzleHttp\Client
                 'body'      => (string) $response->getBody(),
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
-            var_dump($e->getMessage());
+            return [
+                'status' => 'error',
+                'http_code' => $response->getStatusCode(),
+                'body' => $e->getMessage(),
+            ];
         }
     }
 }
