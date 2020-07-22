@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * PayFast API HTTP Client.
  *
@@ -128,9 +130,9 @@ class Client extends \GuzzleHttp\Client
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
             return [
-                'status' => 'error',
+                'status'    => 'error',
                 'http_code' => $response->getStatusCode(),
-                'body' => $e->getMessage(),
+                'body'      => $e->getMessage(),
             ];
         }
     }
@@ -181,9 +183,9 @@ class Client extends \GuzzleHttp\Client
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
             return [
-                'status' => 'error',
+                'status'    => 'error',
                 'http_code' => $response->getStatusCode(),
-                'body' => $e->getMessage(),
+                'body'      => $e->getMessage(),
             ];
         }
     }
@@ -221,10 +223,10 @@ class Client extends \GuzzleHttp\Client
                     isset($params['testing']) ? '&testing=true' : ''
                 ),
                 [
-                'headers' => [
+                    'headers' => [
                         'timestamp' => $params['timestamp'],
                         'signature' => md5($sigstring),
-                ],
+                    ],
                 ]
             );
 
@@ -235,9 +237,9 @@ class Client extends \GuzzleHttp\Client
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
             return [
-                'status' => 'error',
+                'status'    => 'error',
                 'http_code' => $response->getStatusCode(),
-                'body' => $e->getMessage(),
+                'body'      => $e->getMessage(),
             ];
         }
     }
@@ -274,10 +276,10 @@ class Client extends \GuzzleHttp\Client
                     isset($params['testing']) ? '&testing=true' : ''
                 ),
                 [
-                'headers' => [
+                    'headers' => [
                         'timestamp' => $params['timestamp'],
                         'signature' => md5($sigstring),
-                ],
+                    ],
                 ]
             );
 
@@ -288,9 +290,9 @@ class Client extends \GuzzleHttp\Client
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
             return [
-                'status' => 'error',
+                'status'    => 'error',
                 'http_code' => $response->getStatusCode(),
-                'body' => $e->getMessage(),
+                'body'      => $e->getMessage(),
             ];
         }
     }
@@ -338,9 +340,9 @@ class Client extends \GuzzleHttp\Client
             ];
         } catch (\GuzzleHttp\Exception\ServerException $e) {
             return [
-                'status' => 'error',
+                'status'    => 'error',
                 'http_code' => $response->getStatusCode(),
-                'body' => $e->getMessage(),
+                'body'      => $e->getMessage(),
             ];
         }
     }
