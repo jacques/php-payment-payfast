@@ -1,15 +1,15 @@
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         bootstrap="./bootstrap.php"
-         verbose="true">
-    <testsuite name="PayFast API HTTP Client Test Suite">
-        <directory>./</directory>
-    </testsuite>
-    <logging>
-        <log type="coverage-html" target="../build/coverage"/>
-    </logging>
-    <listeners>
-        <listener class="VCR\PHPUnit\TestListener\VCRTestListener" file="vendor/php-vcr/phpunit-testlistener-vcr/src/VCRTestListener.php" />
-    </listeners>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" colors="true" bootstrap="./bootstrap.php" verbose="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <report>
+      <html outputDirectory="../build/coverage"/>
+    </report>
+  </coverage>
+  <testsuite name="PayFast API HTTP Client Test Suite">
+    <directory>./</directory>
+  </testsuite>
+  <logging/>
+  <listeners>
+    <listener class="VCR\PHPUnit\TestListener\VCRTestListener" file="vendor/php-vcr/phpunit-testlistener-vcr/src/VCRTestListener.php"/>
+  </listeners>
 </phpunit>
