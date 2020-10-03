@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "graham-campbell/guzzle-factory": "^4.0",
+        "graham-campbell/guzzle-factory": "^3.0|^4.0",
         "nesbot/carbon": "^2.16"
     },
     "require-dev": {
