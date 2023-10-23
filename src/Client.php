@@ -5,7 +5,7 @@ declare(strict_types=1);
  * PayFast API HTTP Client.
  *
  * @author    Jacques Marneweck <jacques@siberia.co.za>
- * @copyright 2018-2020 Jacques Marneweck.  All rights strictly reserved.
+ * @copyright 2018-2023 Jacques Marneweck.  All rights strictly reserved.
  * @license   MPLv2
  */
 
@@ -18,7 +18,7 @@ class Client extends \GuzzleHttp\Client
     /**
      * @const string Version number
      */
-    const VERSION = '0.0.2';
+    public const VERSION = '0.0.2';
 
     /**
      * @var array[]
@@ -193,8 +193,6 @@ class Client extends \GuzzleHttp\Client
     /**
      * Check if the API is responding to requests for a given token.
      *
-     * @param string $from
-     * @param string $to
      *
      * @throws \GuzzleHttp\Exception\ClientException
      *
@@ -247,10 +245,8 @@ class Client extends \GuzzleHttp\Client
     /**
      * Check if the API is responding to requests for a given token.
      *
-     * @param string $date
      *
      * @throws Exception
-     *
      * @return array
      */
     public function transactionHistoryWeekly(string $date): array
